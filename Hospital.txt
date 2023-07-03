@@ -1,0 +1,155 @@
+import java.io.*;
+import java.util.*;
+ 
+class Doctor
+{    
+    Scanner sc = new Scanner(System.in);
+    String dname,droom,did;
+    
+   void new_doctor()
+    {
+        System.out.println("id");
+        did =sc.nextLine();
+        System.out.println("name");
+        dname =sc.nextLine();
+        System.out.println("room no");
+        droom =sc.nextLine();
+    }
+    void doctorinfo()
+    {
+         System.out.println( did + "\t\t" + dname + "\t\t" + droom  );
+    }
+}
+class Patient
+ {   Scanner sc = new Scanner(System.in);
+    String pname,pdisease;
+    String pid;
+   void newpatient()
+    {
+         System.out.println("id");
+        pid =sc.nextLine();
+        System.out.println("name");
+        pname =sc.nextLine();
+        System.out.println("diease");
+        pdisease =sc.nextLine();
+    }
+    void patientinfo()
+    {
+        System.out.println( pid + "\t\t" + pname + "\t\t" + pdisease);
+    }
+}
+
+public class HospitalManagement
+{
+    public static void main(String[] args)
+     {
+        int count1=0, count2=0;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("-----------------------------------------------------------");
+        System.out.println(" WELCOME TO HOSPITAL MANAGEMENT PROJECT IN JAVA");
+         System.out.println("-------------------------------------------------------    ");
+
+
+         Doctor[] d=new Doctor[25];
+         Patient[] p =new Patient[25];
+          int i;
+        for (i = 0; i < 25; i++)
+            d[i] = new Doctor();
+        for (i = 0; i < 25; i++)
+            p[i] = new Patient();
+
+
+         int choice ,j,c1,c2,status=1,s1=1,s2=2;
+        
+         while (status==1)
+        {
+            System.out.println("--------------MAIN MENU---------------------");
+            System.out.println("-----------------------------------------------");
+            System.out.println("  1.doctor     \t   2.patient    \t       ");
+            System.out.println("-----------------------------------------------");
+             
+            choice=sc.nextInt();
+           switch(choice)
+         {
+             case 1: 
+             System.out.println("-----------------------------------------------");
+             System.out.println("           DOCTOR SECTION");
+              System.out.println("-----------------------------------------------");
+              s1=1;
+              while (s1==1) 
+              
+              {
+                System.out.println("1.add new entery\n2.display list");
+                c1=sc.nextInt();
+                switch (c1)
+                 {
+                    case 1: d[count1].new_doctor();
+                           count1++;
+                        
+                        break;
+                    case 2: 
+                           System.out.println("-----------------------------------------------");
+                            System.out.println("  id     \t    name    \t      room ");
+                           System.out.println("-----------------------------------------------");
+                           for (j = 0; j<count1; j++) 
+
+                           {  
+                              d[j].doctorinfo();
+                               
+                            }
+                      
+                        break;
+                    
+                 }
+                System.out.println("\nReturn to Back Press 1 and for Main Menu Press 0");
+                            s1 = sc.nextInt();
+              }
+                 break;
+                
+              
+              case 2:  System.out.println("-----------------------------------------------");
+                       System.out.println("           patient SECTION");
+                       System.out.println("-----------------------------------------------");
+
+                           s2=1;
+                           while(s2==1)
+                           {
+                            System.out.println("1.add new entery\n2.display list");
+                            c2=sc.nextInt();  
+                            switch(c2)
+                            {
+                                case 1: p[count2].newpatient();
+                                count2++;
+                                break;
+                                case 2: 
+                                 System.out.println("-----------------------------------------------");
+                                 System.out.println("  id     \t    name    \t      disease ");
+                                 System.out.println("-----------------------------------------------");
+                                for ( j = 0; j< count2; j++)
+                                 {
+                                    p[j].patientinfo();
+                                    
+                                }
+                                break;
+                               }  System.out.println("\n Press 1to go back \n for Main Menu Press 0");
+                             s2 = sc.nextInt();
+                            
+                        }
+                        break;
+                         default:
+                    {
+                        System.out.println(" You Have Enter Wrong Choice!!!");
+                    }
+
+         }          
+
+ 
+                
+            System.out.println("\nReturn to MAIN MENU Press 1");
+
+            status = sc.nextInt(); 
+        }
+    }        
+    
+}
+  
